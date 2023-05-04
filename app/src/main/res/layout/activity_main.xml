@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wifi_camera.mylibrary.MainActivity">
+
+
+    <!--com.joyhonest.wifination.JH_GLSurfaceView
+        android:id="@+id/GLSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         /-->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+
+        app:srcCompat="@mipmap/ic_launcher"/>
+
+
+
+    <Button
+        android:id="@+id/photo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="拍照"/>
+
+    <Button
+        android:id="@+id/Record_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/photo_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/photo_btn"
+        app:layout_constraintLeft_toRightOf="@+id/photo_btn"
+        android:text="录影"/>
+
+    <Button
+        android:id="@+id/SetMode0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/Record_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/Record_btn"
+        app:layout_constraintLeft_toRightOf="@+id/Record_btn"
+
+        android:text="Led Mode0"/>
+
+
+    <Button
+        android:id="@+id/SetMode1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/SetMode0"
+        app:layout_constraintBottom_toBottomOf="@+id/SetMode0"
+        app:layout_constraintLeft_toRightOf="@+id/SetMode0"
+        android:text="Led mode1" />
+
+    <Button
+        android:id="@+id/SetMode2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/SetMode0"
+        app:layout_constraintBottom_toBottomOf="@+id/SetMode0"
+        app:layout_constraintLeft_toRightOf="@+id/SetMode1"
+        android:text="Led mode2" />
+
+    <Button
+        android:id="@+id/ReadMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/SetMode0"
+        app:layout_constraintBottom_toBottomOf="@+id/SetMode0"
+        app:layout_constraintLeft_toRightOf="@+id/SetMode2"
+        android:text="ReadMode" />
+
+
+    <Button
+        android:id="@+id/stop_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/SetMode0"
+        app:layout_constraintBottom_toBottomOf="@+id/SetMode0"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="返回"/>
+
+    <TextView
+        android:id="@+id/RecortTime_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/Record_btn"
+        app:layout_constraintLeft_toLeftOf="@+id/Record_btn"
+        app:layout_constraintRight_toRightOf="@+id/Record_btn"
+        android:text="00:00"
+        android:textColor="#FFFF0000"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

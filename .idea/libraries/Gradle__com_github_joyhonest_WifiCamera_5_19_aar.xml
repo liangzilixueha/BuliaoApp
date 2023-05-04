@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.joyhonest:WifiCamera:5.19@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/564c36a902ec50af6e5bb3a21b597bef/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/564c36a902ec50af6e5bb3a21b597bef/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/564c36a902ec50af6e5bb3a21b597bef/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6cda3ed9fda8d1594dbe64e7b95ce24/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6cda3ed9fda8d1594dbe64e7b95ce24/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6cda3ed9fda8d1594dbe64e7b95ce24/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
