@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Demo_Android.iml" filepath="$PROJECT_DIR$/Demo_Android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Demo_Android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Demo_Android.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Demo_Android.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Demo_Android.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Demo_Android.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Demo_Android.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Demo_Android.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Demo_Android.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BuliaoApp.iml" filepath="$PROJECT_DIR$/.idea/modules/BuliaoApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BuliaoApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BuliaoApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BuliaoApp.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BuliaoApp.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BuliaoApp.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BuliaoApp.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BuliaoApp.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BuliaoApp.app.unitTest.iml" />
     </modules>
   </component>
 </project>
