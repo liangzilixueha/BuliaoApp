@@ -4,11 +4,13 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/564c36a902ec50af6e5bb3a21b597bef/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/564c36a902ec50af6e5bb3a21b597bef/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/564c36a902ec50af6e5bb3a21b597bef/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6cda3ed9fda8d1594dbe64e7b95ce24/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6cda3ed9fda8d1594dbe64e7b95ce24/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6cda3ed9fda8d1594dbe64e7b95ce24/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/143efc177d422a8f3ea5360255db3b97/transformed/jetified-WifiCamera-5.19/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/143efc177d422a8f3ea5360255db3b97/transformed/jetified-WifiCamera-5.19/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/143efc177d422a8f3ea5360255db3b97/transformed/jetified-WifiCamera-5.19/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.joyhonest/WifiCamera/5.19/817d5d25a30aacaceff7a4f94b6324a0df3dc6c9/WifiCamera-5.19-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

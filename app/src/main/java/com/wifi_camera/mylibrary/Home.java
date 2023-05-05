@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.wifi_camera.mylibrary.databinding.ActivityHomeBinding;
+
 public class Home extends AppCompatActivity {
 
     private FrameLayout frameLayout;
+    private ActivityHomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
