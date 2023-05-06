@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/clHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,10 +47,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+            android:id="@+id/clClassify"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+            app:layout_constraintStart_toEndOf="@+id/clHome"
             app:layout_constraintWidth_percent="0.2">
 
             <ImageView
@@ -74,7 +74,7 @@
             android:id="@+id/constraintLayout3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintStart_toEndOf="@+id/clClassify"
             app:layout_constraintWidth_percent="0.2">
 
 
@@ -88,8 +88,9 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--        订单-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout4"
+            android:id="@+id/clBill"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
@@ -115,7 +116,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintStart_toEndOf="@+id/clBill"
             app:layout_constraintWidth_percent="0.2">
 
             <ImageView
