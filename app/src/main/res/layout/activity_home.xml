@@ -18,7 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:background="@color/dark_blue"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -31,7 +31,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/ic_home"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/ic_classify"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -98,7 +98,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/ic_bill"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -114,6 +114,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMy"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toEndOf="@+id/clBill"
@@ -121,7 +122,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/ic_my"
                 app:layout_constraintTop_toTopOf="parent" />

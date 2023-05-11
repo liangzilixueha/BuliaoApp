@@ -96,6 +96,8 @@ public class ClassifyFragment extends Fragment {
                 binding.tv3.setText("测试数据");
             }
         });
+        //list去除点击水波纹
+        binding.list.setSelector(R.color.white);
         return binding.getRoot();
     }
 }

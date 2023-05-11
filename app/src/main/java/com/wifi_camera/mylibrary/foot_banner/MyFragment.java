@@ -11,9 +11,10 @@ import android.view.ViewGroup;
 import com.wifi_camera.mylibrary.R;
 
 
-public class HomeFragment extends Fragment {
+public class MyFragment extends Fragment {
 
-    public HomeFragment() {
+
+    public MyFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +28,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_my, container, false);
     }
 }

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue">
+    android:background="@color/background_blue">
 
     <TextView
         android:id="@+id/textView3"
@@ -27,7 +27,9 @@
             android:id="@+id/constraintLayout12"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:padding="15dp"
+            android:padding="10dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintWidth_percent="0.25">
 
@@ -50,7 +52,9 @@
             android:id="@+id/constraintLayout13"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:padding="15dp"
+            android:padding="10dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout12"
             app:layout_constraintWidth_percent="0.25">
 
@@ -73,7 +77,9 @@
             android:id="@+id/constraintLayout14"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:padding="15dp"
+            android:padding="10dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout13"
             app:layout_constraintWidth_percent="0.25">
 
@@ -95,7 +101,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:padding="15dp"
+            android:padding="10dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout14"
             app:layout_constraintWidth_percent="0.25">
 
@@ -118,10 +126,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout16">
 
         <TextView
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
