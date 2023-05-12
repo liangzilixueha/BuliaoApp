@@ -71,7 +71,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout3"
+            android:id="@+id/clCamera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toEndOf="@+id/clClassify"
@@ -93,7 +93,7 @@
             android:id="@+id/clBill"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
+            app:layout_constraintStart_toEndOf="@+id/clCamera"
             app:layout_constraintWidth_percent="0.2">
 
             <ImageView

@@ -35,7 +35,11 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.code.gson:gson:2.10.1'//json
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")//网络请求
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
