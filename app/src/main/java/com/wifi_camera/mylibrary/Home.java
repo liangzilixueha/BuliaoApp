@@ -3,6 +3,8 @@ package com.wifi_camera.mylibrary;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -22,7 +24,9 @@ import com.wifi_camera.mylibrary.foot_banner.ClassifyFragment;
 import com.wifi_camera.mylibrary.foot_banner.HomeFragment;
 import com.wifi_camera.mylibrary.foot_banner.MyFragment;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Objects;
 
@@ -74,7 +78,7 @@ public class Home extends AppCompatActivity {
                         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
                         Log.d("进入：", "requestPermissions");
                     }
-                    //无视错误（这个好赖皮啊
+//                    无视错误（这个好赖皮啊
                     StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
                     StrictMode.setVmPolicy(builder.build());
                     builder.detectFileUriExposure();
@@ -89,61 +93,93 @@ public class Home extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             Log.e("TAG", "拍摄成功");
+            //压缩文件
+            Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "test.png");
+            qualityCompress(bitmap, new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "test-yasuo.jpeg"));
             //提示图库更新
             Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "test.png"));
+            Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/"));
             intent.setData(uri);
             sendBroadcast(intent);
+            new Thread(() -> {
+                try {
+                    上传结果 rel = 发送图片到服务器();
+                    识别结果 a = 请求识别(rel.data);
+                    //输出提示
+                } catch (Exception e) {
+                    Log.e("TAG", "错误结果：" + e);
+                }
+            }).start();
         }
     }
 
-    private void 发送图片到服务器() {
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "a.jpg";
+    private 上传结果 发送图片到服务器() throws Exception {
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "test-yasuo.jpeg";
         OkHttpClient okHttpClient = new OkHttpClient();
         String url = "https://mbzt.maibuyi.com/mbz-xcx/common/pic/up";
         File file = new File(path);
-        try {
-            RequestBody requestBody = new MultipartBody.Builder()
-                    .setType(MultipartBody.FORM)
-                    .addFormDataPart("file", file.getName(),
-                            RequestBody.create(MediaType.parse("multipart/form-data"), file))
-                    .build();
-            Request request = new Request.Builder()
-                    .url(url)
-                    .post(requestBody)
-                    .build();
-            Response response = okHttpClient.newCall(request).execute();
-            String str = response.body().string();
-            Log.e("TAG", "返回=" + str);
-            上传结果 rel = new Gson().fromJson(str, 上传结果.class);
-            识别结果 r = 请求识别(rel);
-            Log.e("TAG", "识别66:" + Objects.requireNonNull(r).data.get(1).proName);
-        } catch (Exception e) {
-            Log.e("TAG", e.toString());
-        }
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("file", file.getName(),
+                        RequestBody.create(MediaType.parse("multipart/form-data"), file))
+                .build();
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+        Response response = okHttpClient.newCall(request).execute();
+        String str = response.body().string();
+        上传结果 rel = new Gson().fromJson(str, 上传结果.class);
+        return rel;
     }
 
-    private 识别结果 请求识别(上传结果 rel) {
-
+    /**
+     * @param data 请传入上传结果的中的data数据
+     * @return
+     * @throws Exception
+     */
+    private 识别结果 请求识别(String data) throws Exception {
+        Log.e("TAG", "请求识别-目标连接: " + data);
         //新建一个post请求，往请求体中加入json格式的字符串
         String url = "https://mbzt.maibuyi.com/mbz-xcx/common/pic/search";
-        识别需要的json search = new 识别需要的json("http://" + rel.data);
+        识别需要的json search = new 识别需要的json("http://" + data);
         Request request = new Request.Builder()
                 .addHeader("content-type", "application/json")
                 .url(url)
                 .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), new Gson().toJson(search)))
                 .build();
-        try {
-            Response response = new OkHttpClient().newCall(request).execute();
-            String json = response.body().string();
-            Log.e("TAG", "请求识别: " + json);
-            return new Gson().fromJson(json, 识别结果.class);
-        } catch (Exception e) {
-            Log.e("TAG", "识别错误");
-        }
-        return null;
-
+        Response response = new OkHttpClient().newCall(request).execute();
+        String json = response.body().string();
+        Log.e("TAG", "请求识别: " + json);
+        return new Gson().fromJson(json, 识别结果.class);
     }
+
+    /**
+     * 质量压缩
+     * 设置bitmap options属性，降低图片的质量，像素不会减少
+     * 第一个参数为需要压缩的bitmap图片对象，第二个参数为压缩后图片保存的位置
+     * 设置options 属性0-100，来实现压缩（因为png是无损压缩，所以该属性对png是无效的）
+     *
+     * @param bmp
+     * @param file
+     */
+    public void qualityCompress(Bitmap bmp, File file) {
+        // 0-100 100为不压缩
+        int quality = 20;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        // 把压缩后的数据存放到baos中
+        bmp.compress(Bitmap.CompressFormat.JPEG, quality, baos);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.flush();
+            fos.close();
+            Log.e("TAG", "压缩成功");
+        } catch (Exception e) {
+            Log.e("TAG", "压缩失败: " + e);
+        }
+    }
+
 
     class 上传结果 {
         @SerializedName("code")
