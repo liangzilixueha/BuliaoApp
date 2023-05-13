@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -131,13 +130,13 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout16">
 
         <TextView
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="您还未有相关的采购信息~"
             android:textColor="@color/dark_blue"
-            android:textSize="25dp">
+            android:textSize="25dp"
+            android:textStyle="bold">
 
         </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>

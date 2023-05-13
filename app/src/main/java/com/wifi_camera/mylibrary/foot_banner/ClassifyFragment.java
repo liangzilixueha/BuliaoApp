@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.wifi_camera.mylibrary.ListAdapter;
+import com.wifi_camera.mylibrary.adapter.ListAdapter;
 import com.wifi_camera.mylibrary.R;
 import com.wifi_camera.mylibrary.databinding.FragmentClassifyBinding;
 

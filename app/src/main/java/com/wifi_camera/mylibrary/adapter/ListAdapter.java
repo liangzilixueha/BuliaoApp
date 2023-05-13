@@ -1,4 +1,4 @@
-package com.wifi_camera.mylibrary;
+package com.wifi_camera.mylibrary.adapter;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
