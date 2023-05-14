@@ -104,7 +104,9 @@ public class Home extends AppCompatActivity {
                 try {
                     上传结果 rel = 发送图片到服务器();
                     识别结果 a = 请求识别(rel.data);
-                    //输出提示
+                    Intent in = new Intent(this, ResultActivity.class);
+                    in.putExtra("data", new Gson().toJson(a));
+                    startActivity(in);
                 } catch (Exception e) {
                     Log.e("TAG", "错误结果：" + e);
                 }
@@ -162,7 +164,7 @@ public class Home extends AppCompatActivity {
      * @param bmp
      * @param file
      */
-    public void qualityCompress(Bitmap bmp, File file) {
+    private void qualityCompress(Bitmap bmp, File file) {
         // 0-100 100为不压缩
         int quality = 20;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
