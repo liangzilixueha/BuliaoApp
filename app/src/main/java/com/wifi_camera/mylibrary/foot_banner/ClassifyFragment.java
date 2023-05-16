@@ -23,6 +23,7 @@ public class ClassifyFragment extends Fragment {
     private List<TextView> tvlist = new ArrayList<>();
     private List<ConstraintLayout> layoutlist = new ArrayList<>();
     private List<String> strlist = new ArrayList<>();
+    private List<List<String>> 全文本list = new ArrayList<>();
 
     public ClassifyFragment() {
     }
@@ -85,19 +86,17 @@ public class ClassifyFragment extends Fragment {
             }
         }
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add("测试数据");
+        for (int i = 0; i < 50; i++) {
+            list.add("A" + i);
         }
-        binding.list.setAdapter(new ListAdapter<String>(list, R.layout.list_classify) {
+        binding.grid.setAdapter(new ListAdapter<String>(list, R.layout.list_classify) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-                binding.tv1.setText("测试数据");
-                binding.tv2.setText("测试数据");
-                binding.tv3.setText("测试数据");
+                holder.setText(R.id.text, obj);
             }
         });
-        //list去除点击水波纹
-        binding.list.setSelector(R.color.white);
+        //grid去除点击水波纹
+        binding.grid.setSelector(R.color.white);
         return binding.getRoot();
     }
 }
