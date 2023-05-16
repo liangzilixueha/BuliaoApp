@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.wifi_camera.mylibrary.adapter.ListAdapter;
 import com.wifi_camera.mylibrary.R;
+import com.wifi_camera.mylibrary.adapter.RecycleAdapter;
 import com.wifi_camera.mylibrary.databinding.FragmentClassifyBinding;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class ClassifyFragment extends Fragment {
     private List<ConstraintLayout> layoutlist = new ArrayList<>();
     private List<String> strlist = new ArrayList<>();
     private List<List<String>> 全文本list = new ArrayList<>();
+    private RecycleAdapter<String> recycleAdapter;
 
     public ClassifyFragment() {
     }
@@ -37,6 +40,7 @@ public class ClassifyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentClassifyBinding.inflate(inflater, container, false);
+        init();
         strlist.add("通俗名称");
         strlist.add("成分");
         strlist.add("用途");
@@ -78,25 +82,47 @@ public class ClassifyFragment extends Fragment {
                         layoutlist.get(j).setBackgroundColor(getResources().getColor(R.color.background_blue));
                     }
                 }
+                //设置内容
+                binding.grid.setAdapter(new ListAdapter<String>(全文本list.get(finalI), R.layout.list_classify) {
+                    @Override
+                    public void bindView(ViewHolder holder, String obj) {
+                        holder.setText(R.id.text, obj);
+                        holder.setOnClickListener(R.id.text, v -> {
+                            recycleAdapter.addOnly(obj);
+                        });
+                    }
+                });
             });
             //设置默认选中第一个
             if (i == 0) {
                 tvlist.get(i).setTextColor(getResources().getColor(R.color.橙黄));
                 layoutlist.get(i).setBackgroundColor(getResources().getColor(R.color.white));
+                binding.grid.setAdapter(new ListAdapter<String>(全文本list.get(finalI), R.layout.list_classify) {
+                    @Override
+                    public void bindView(ViewHolder holder, String obj) {
+                        holder.setText(R.id.text, obj);
+                        holder.setOnClickListener(R.id.text, v -> {
+                            recycleAdapter.addOnly(obj);
+                        });
+                    }
+                });
             }
         }
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            list.add("A" + i);
-        }
-        binding.grid.setAdapter(new ListAdapter<String>(list, R.layout.list_classify) {
-            @Override
-            public void bindView(ViewHolder holder, String obj) {
-                holder.setText(R.id.text, obj);
-            }
-        });
         //grid去除点击水波纹
         binding.grid.setSelector(R.color.white);
         return binding.getRoot();
+    }
+
+    private void init() {
+        for (int i = 0; i < 6; i++) {
+            List<String> list = new ArrayList<>();
+            for (int j = 0; j < 50; j++) {
+                Character c = (char) (i + 'a');
+                list.add(c + " " + j);
+            }
+            全文本list.add(list);
+        }
+        recycleAdapter = new RecycleAdapter<>(new ArrayList<>(), R.layout.list_card);
+        binding.listView.setAdapter(recycleAdapter);
     }
 }
