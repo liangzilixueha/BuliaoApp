@@ -1,33 +1,20 @@
 package com.wifi_camera.mylibrary;
 
-import static android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET;
-import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
-
 import android.app.Activity;
-import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.ConnectivityManager;
-import android.net.Network;
-import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
-import android.net.NetworkRequest;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Looper;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -38,23 +25,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.gson.Gson;
 import com.joyhonest.wifination.wifination;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Objects;
 
-public class MainActivity extends Activity {
+public class MyMainActivity extends Activity {
 
 
     private final String TAG = "MainActivity";
@@ -97,16 +80,16 @@ public class MainActivity extends Activity {
 
     boolean bRecording = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //设置状态栏颜色
-        getWindow().setStatusBarColor(getResources().getColor(R.color.background_blue));
+
         F_CreateLocalDir();      //Create a directory for your photos and videos
         //Android 10 or later: Obtain permissions
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
 
         thread1 = new HandlerThread("MyHandlerThread");
         thread1.start(); //创建一个HandlerThread并启动它
@@ -161,61 +144,6 @@ public class MainActivity extends Activity {
         ReadMode.setOnClickListener(v -> {
             wifination.naGetLedMode();
         });
-        imageView.setOnLongClickListener(v -> {
-            Vibrator vib = (Vibrator) this.getSystemService(Service.VIBRATOR_SERVICE);
-            vib.vibrate(100);
-            //菜单多选
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("请选择操作")
-                    .setItems(new String[]{"保存到图库", "上传识别", "取消"}, (dialog, which) -> {
-                        switch (which) {
-                            case 0:
-                                save();
-                                break;
-                            case 1:
-                                save();
-
-                                final ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                                NetworkRequest.Builder builder = null;
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                                    builder = new NetworkRequest.Builder();
-                                    builder.addCapability(NET_CAPABILITY_INTERNET);
-                                    builder.addTransportType(TRANSPORT_CELLULAR);
-                                    NetworkRequest build = builder.build();
-                                    connectivityManager.requestNetwork(build, new ConnectivityManager.NetworkCallback() {
-                                        @Override
-                                        public void onAvailable(Network network) {
-                                            super.onAvailable(network);
-                                            try {
-                                                NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-                                                Log.e("TAG", "当前使用的网络：" + activeNetworkInfo.getTypeName());
-                                                if (Build.VERSION.SDK_INT >= 23) {
-                                                    connectivityManager.bindProcessToNetwork(network); //这句话要加上哈，不然设置不生效
-                                                } else {// 23后这个方法舍弃了
-                                                    ConnectivityManager.setProcessDefaultNetwork(network);
-                                                }
-                                                Home.上传结果 rel = new Home().发送图片到服务器("wifi.jpg");
-                                                Home.识别结果 a = new Home().请求识别(rel.data);
-                                                Intent in = new Intent(MainActivity.this, ResultActivity.class);
-                                                in.putExtra("data", new Gson().toJson(a));
-                                                startActivity(in);
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-
-                                        }
-                                    });
-                                }
-                                break;
-                            case 2:
-                                break;
-                            default:
-                                break;
-                        }
-                    })
-                    .show();
-            return false;
-        });
         wifination.appContext = getApplicationContext();  // getApplicationContext();
         F_OpenStream();
         wifination.naGetLedMode();
@@ -223,30 +151,6 @@ public class MainActivity extends Activity {
         EventBus.getDefault().register(this);  // important！！！
     }
 
-    private String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "wifi.jpg";
-
-    private void save() {
-        BitmapDrawable bd = (BitmapDrawable) imageView.getDrawable();
-        Bitmap bitmap = bd.getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        // 把压缩后的数据存放到baos中
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        //系统bitmap保存到本地
-        try {
-            FileOutputStream fos = new FileOutputStream(path);
-            fos.write(baos.toByteArray());
-            fos.flush();
-            fos.close();
-            Toast.makeText(this, "保存成功", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/"));
-            intent.setData(uri);
-            Objects.requireNonNull(this).sendBroadcast(intent);
-        } catch (Exception e) {
-            Log.e("TAG", "保存失败: " + e);
-            Toast.makeText(this, "保存失败", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private void F_BacktStartActivity() {
         bExitTest = true;
