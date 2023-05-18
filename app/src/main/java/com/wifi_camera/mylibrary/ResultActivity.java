@@ -22,6 +22,8 @@ import com.google.gson.Gson;
 import com.wifi_camera.mylibrary.adapter.ListAdapter;
 import com.wifi_camera.mylibrary.databinding.ActivityResultBinding;
 
+import java.util.HashMap;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
@@ -30,6 +32,7 @@ public class ResultActivity extends AppCompatActivity {
     private ActivityResultBinding binding;
     private ConnectivityManager connectivityManager;
     private NetworkRequest.Builder builder;
+    private HashMap<Integer, Bitmap> map = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,47 @@ public class ResultActivity extends AppCompatActivity {
         String data = getIntent().getStringExtra("data");
         Log.e("TAG", "将要显示的数据: " + data);
         Home.识别结果 a = new Gson().fromJson(data, Home.识别结果.class);
+        for (int i = 0; i < a.data.size(); i++) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                builder = new NetworkRequest.Builder();
+                builder.addCapability(NET_CAPABILITY_INTERNET);
+                builder.addTransportType(TRANSPORT_CELLULAR);
+                NetworkRequest build = builder.build();
+                int finalI = i;
+                connectivityManager.requestNetwork(build, new ConnectivityManager.NetworkCallback() {
+                    @Override
+                    public void onAvailable(Network network) {
+                        super.onAvailable(network);
+                        try {
+                            if (Build.VERSION.SDK_INT >= 23) {
+                                connectivityManager.bindProcessToNetwork(network); //这句话要加上哈，不然设置不生效
+                            } else {// 23后这个方法舍弃了
+                                ConnectivityManager.setProcessDefaultNetwork(network);
+                            }
+                            OkHttpClient client = new OkHttpClient();
+                            Request request = new Request.Builder()
+                                    .url("http://" + a.data.get(finalI).img)
+                                    .build();
+                            okhttp3.Response response = client.newCall(request).execute();
+                            byte[] bytes = response.body().bytes();
+                            //bytes转换成bitmap
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                            map.put(a.data.get(finalI).itemId, bitmap);
+                            if (Build.VERSION.SDK_INT >= 23) {
+                                connectivityManager.bindProcessToNetwork(null); //这句话要加上哈，不然设置不生效
+                            } else {// 23后这个方法舍弃了
+                                ConnectivityManager.setProcessDefaultNetwork(null);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Log.e("TAG", "同步图片出错: " + e);
+                        }
+
+                    }
+                });
+            }
+
+        }
         binding.gridView.setAdapter(new ListAdapter<Home.识别结果.DataDTO>(a.data, R.layout.list_result) {
             @Override
             public void bindView(ViewHolder holder, Home.识别结果.DataDTO obj) {
@@ -50,34 +94,47 @@ public class ResultActivity extends AppCompatActivity {
                 holder.setText(R.id.colorName, obj.colorName);
                 holder.setText(R.id.price, "价格：" + obj.showPrice.toString());
 
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    builder = new NetworkRequest.Builder();
-                    builder.addCapability(NET_CAPABILITY_INTERNET);
-                    builder.addTransportType(TRANSPORT_CELLULAR);
-                    NetworkRequest build = builder.build();
-                    connectivityManager.requestNetwork(build, new ConnectivityManager.NetworkCallback() {
-                        @Override
-                        public void onAvailable(Network network) {
-                            super.onAvailable(network);
-                            try {
-                                if (Build.VERSION.SDK_INT >= 23) {
-                                    connectivityManager.bindProcessToNetwork(network); //这句话要加上哈，不然设置不生效
-                                } else {// 23后这个方法舍弃了
-                                    ConnectivityManager.setProcessDefaultNetwork(network);
-                                }
-                                下载图片(holder, obj);
-                                if (Build.VERSION.SDK_INT >= 23) {
-                                    connectivityManager.bindProcessToNetwork(null); //这句话要加上哈，不然设置不生效
-                                } else {// 23后这个方法舍弃了
-                                    ConnectivityManager.setProcessDefaultNetwork(null);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                Log.e("TAG", "同步图片出错: " + e);
-                            }
-
-                        }
-                    });
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                    builder = new NetworkRequest.Builder();
+//                    builder.addCapability(NET_CAPABILITY_INTERNET);
+//                    builder.addTransportType(TRANSPORT_CELLULAR);
+//                    NetworkRequest build = builder.build();
+//                    connectivityManager.requestNetwork(build, new ConnectivityManager.NetworkCallback() {
+//                        @Override
+//                        public void onAvailable(Network network) {
+//                            super.onAvailable(network);
+//                            try {
+//                                if (Build.VERSION.SDK_INT >= 23) {
+//                                    connectivityManager.bindProcessToNetwork(network); //这句话要加上哈，不然设置不生效
+//                                } else {// 23后这个方法舍弃了
+//                                    ConnectivityManager.setProcessDefaultNetwork(network);
+//                                }
+//                                OkHttpClient client = new OkHttpClient();
+//                                Request request = new Request.Builder()
+//                                        .url("http://" + obj.img)
+//                                        .build();
+//                                okhttp3.Response response = client.newCall(request).execute();
+//                                byte[] bytes = response.body().bytes();
+//                                //bytes转换成bitmap
+//                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+//                                下载图片(holder, obj);
+//                                if (Build.VERSION.SDK_INT >= 23) {
+//                                    connectivityManager.bindProcessToNetwork(null); //这句话要加上哈，不然设置不生效
+//                                } else {// 23后这个方法舍弃了
+//                                    ConnectivityManager.setProcessDefaultNetwork(null);
+//                                }
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                                Log.e("TAG", "同步图片出错: " + e);
+//                            }
+//
+//                        }
+//                    });
+//                }
+                try {
+                    holder.setImageBitmap(R.id.img, map.get(obj.itemId));
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
