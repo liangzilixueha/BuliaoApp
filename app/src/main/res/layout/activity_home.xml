@@ -75,21 +75,19 @@
             android:id="@+id/clCamera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:padding="10dp"
             app:layout_constraintStart_toEndOf="@+id/clClassify"
             app:layout_constraintWidth_percent="0.2">
 
 
-            <TextView
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:text="摄像头展示处"
-                android:textColor="#FFFFFF"
-                android:textSize="@dimen/底部banner栏"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_carmer" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        订单-->
+        <!--        订单-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clBill"
             android:layout_width="0dp"
