@@ -13,6 +13,7 @@ import com.wifi_camera.mylibrary.R;
 import com.wifi_camera.mylibrary.databinding.FragmentHomeBinding;
 import com.wifi_camera.mylibrary.foot_banner.Home.NewestFragment;
 import com.wifi_camera.mylibrary.foot_banner.Home.PowerFragment;
+import com.wifi_camera.mylibrary.foot_banner.Home.SearchActivity;
 import com.wifi_camera.mylibrary.foot_banner.Home.StarShopActivity;
 import com.wifi_camera.mylibrary.foot_banner.Home.ZhengZhiActivity;
 
@@ -65,14 +66,18 @@ public class HomeFragment extends Fragment {
         binding.tvZhengZhiMore.setOnClickListener(view -> {
             //跳转到针织
             Intent intent = new Intent(requireActivity(), ZhengZhiActivity.class);
-            intent.putExtra("title","针织推荐");
+            intent.putExtra("title", "针织推荐");
             startActivity(intent);
         });
         binding.tvYingHuaMore.setOnClickListener(view -> {
             //跳转到针织
             Intent intent = new Intent(requireActivity(), ZhengZhiActivity.class);
-            intent.putExtra("title","印花推荐");
+            intent.putExtra("title", "印花推荐");
             startActivity(intent);
+        });
+        binding.clSearch.setOnClickListener(view -> {
+            //跳转到搜索
+            startActivity(new Intent(requireActivity(), SearchActivity.class));
         });
         return binding.getRoot();
     }

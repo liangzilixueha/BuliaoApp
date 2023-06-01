@@ -30,6 +30,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".foot_banner.Home.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".foot_banner.My.ShoppingCarActivity"
             android:exported="false" />
         <activity

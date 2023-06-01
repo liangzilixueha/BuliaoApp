@@ -120,13 +120,6 @@ public class Home extends AppCompatActivity {
                 });
         binding.clCamera
                 .setOnClickListener(v -> {
-//                    if (choosingCl == binding.clCamera) {
-//                        return;
-//                    }
-//                    choosingCl = binding.clCamera;
-//                    getSupportFragmentManager()
-//                            .beginTransaction()
-//                            .replace(R.id.frameLayout, new CarmerFragment()).commit();
                     startActivity(new Intent(this, MainActivity.class));
                     //跳转到摄像头
 //                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
