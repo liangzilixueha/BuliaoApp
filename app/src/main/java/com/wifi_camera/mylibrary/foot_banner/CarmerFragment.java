@@ -105,8 +105,9 @@ public class CarmerFragment extends Fragment {
             intent.setData(uri);
             Objects.requireNonNull(getActivity()).sendBroadcast(intent);
         } catch (Exception e) {
-            Log.e("TAG", "保存失败: " + e);
-            Toast.makeText(getContext(), "保存失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "保存失败,请删除DCIM/Buliao文件夹", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "错误代码" + e, Toast.LENGTH_SHORT).show();
+
         }
     }
 

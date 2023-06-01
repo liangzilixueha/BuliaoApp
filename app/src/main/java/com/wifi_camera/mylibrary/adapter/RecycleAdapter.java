@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wifi_camera.mylibrary.R;
+import com.wifi_camera.mylibrary.foot_banner.ClassifyFragment;
 
 import java.util.List;
 
@@ -61,6 +62,15 @@ public class RecycleAdapter<T> extends RecyclerView.Adapter<RecycleAdapter.ViewH
         return true;
     }
 
+    public void Delete(int position) {
+        mData.remove(position);
+        notifyDataSetChanged();
+    }
+    public void Delete(T s) {
+        mData.remove(s);
+        notifyDataSetChanged();
+    }
+
     public List<T> getData() {
         return mData;
     }
@@ -69,15 +79,19 @@ public class RecycleAdapter<T> extends RecyclerView.Adapter<RecycleAdapter.ViewH
 
         private final TextView textView;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.text);
             textView.setOnClickListener(v -> {
                 //删除这个item
-                int position = getAdapterPosition();
-                RecycleAdapter adapter = (RecycleAdapter) ((RecyclerView) itemView.getParent()).getAdapter();
-                adapter.getData().remove(position);
-                adapter.notifyItemRemoved(position);
+//                int position = getAdapterPosition();
+//                RecycleAdapter adapter = (RecycleAdapter) ((RecyclerView) itemView.getParent()).getAdapter();
+//                try {
+//                    adapter.getData().remove(position);
+//                    adapter.notifyItemRemoved(position);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
             });
         }
 

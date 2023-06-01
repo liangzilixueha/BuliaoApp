@@ -125,6 +125,9 @@ public class MainActivity extends Activity {
 
 
         imageView = (ImageView) findViewById(R.id.imageView);
+        //识别是否有连接上
+        //获取当前wifi的名字
+        Toast.makeText(this, "长按进行操作", Toast.LENGTH_SHORT).show();
         Snap_Btn.setOnClickListener(view -> {
             Snap_Btn.setTextColor(0xFFFF0000);
             new Handler().postDelayed(() -> Snap_Btn.setTextColor(0xFF000000), 200);
@@ -243,8 +246,8 @@ public class MainActivity extends Activity {
             intent.setData(uri);
             Objects.requireNonNull(this).sendBroadcast(intent);
         } catch (Exception e) {
-            Log.e("TAG", "保存失败: " + e);
-            Toast.makeText(this, "保存失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "保存失败,请删除DCIM/Buliao文件夹", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "错误代码" + e, Toast.LENGTH_LONG).show();
         }
     }
 

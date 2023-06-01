@@ -1,11 +1,17 @@
 package com.wifi_camera.mylibrary.foot_banner;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +36,7 @@ public class ClassifyFragment extends Fragment {
 
     public ClassifyFragment() {
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,8 +94,18 @@ public class ClassifyFragment extends Fragment {
                     @Override
                     public void bindView(ViewHolder holder, String obj) {
                         holder.setText(R.id.text, obj);
+                        List<String> data = recycleAdapter.getData();
+                        if (data.contains(obj)) {
+                            holder.setTextColor(R.id.text, Color.RED);
+                        }
                         holder.setOnClickListener(R.id.text, v -> {
-                            recycleAdapter.addOnly(obj);
+                            if (data.contains(obj)) {
+                                recycleAdapter.Delete(obj);
+                                holder.setTextColor(R.id.text, getResources().getColor(R.color.dark_blue));
+                            } else {
+                                recycleAdapter.addOnly(obj);
+                                holder.setTextColor(R.id.text, Color.RED);
+                            }
                         });
                     }
                 });
@@ -101,8 +118,19 @@ public class ClassifyFragment extends Fragment {
                     @Override
                     public void bindView(ViewHolder holder, String obj) {
                         holder.setText(R.id.text, obj);
+                        List<String> data = recycleAdapter.getData();
+                        if (data.contains(obj)) {
+                            holder.setTextColor(R.id.text, Color.RED);
+                        }
                         holder.setOnClickListener(R.id.text, v -> {
-                            recycleAdapter.addOnly(obj);
+                            if (data.contains(obj)) {
+                                recycleAdapter.Delete(obj);
+                                holder.setTextColor(R.id.text, getResources().getColor(R.color.dark_blue));
+                            } else {
+                                recycleAdapter.addOnly(obj);
+                                holder.setTextColor(R.id.text, Color.RED);
+                            }
+
                         });
                     }
                 });
@@ -124,5 +152,6 @@ public class ClassifyFragment extends Fragment {
         }
         recycleAdapter = new RecycleAdapter<>(new ArrayList<>(), R.layout.list_card);
         binding.listView.setAdapter(recycleAdapter);
+
     }
 }

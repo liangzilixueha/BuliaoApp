@@ -1,5 +1,6 @@
 package com.wifi_camera.mylibrary.foot_banner;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,8 @@ import com.wifi_camera.mylibrary.R;
 import com.wifi_camera.mylibrary.databinding.FragmentHomeBinding;
 import com.wifi_camera.mylibrary.foot_banner.Home.NewestFragment;
 import com.wifi_camera.mylibrary.foot_banner.Home.PowerFragment;
+import com.wifi_camera.mylibrary.foot_banner.Home.StarShopActivity;
+import com.wifi_camera.mylibrary.foot_banner.Home.ZhengZhiActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -54,6 +57,22 @@ public class HomeFragment extends Fragment {
             binding.tvnewest.setTextColor(getResources().getColor(R.color.black));
             binding.tvpower.setTextColor(getResources().getColor(R.color.橙黄));
             binding.tvunderlines.setTranslationX(binding.tvnewest.getWidth());
+        });
+        binding.clStarShop.setOnClickListener(v -> {
+            //跳转到商城
+            startActivity(new Intent(requireActivity(), StarShopActivity.class));
+        });
+        binding.tvZhengZhiMore.setOnClickListener(view -> {
+            //跳转到针织
+            Intent intent = new Intent(requireActivity(), ZhengZhiActivity.class);
+            intent.putExtra("title","针织推荐");
+            startActivity(intent);
+        });
+        binding.tvYingHuaMore.setOnClickListener(view -> {
+            //跳转到针织
+            Intent intent = new Intent(requireActivity(), ZhengZhiActivity.class);
+            intent.putExtra("title","印花推荐");
+            startActivity(intent);
         });
         return binding.getRoot();
     }

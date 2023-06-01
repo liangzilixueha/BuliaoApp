@@ -72,6 +72,11 @@ public class Home extends AppCompatActivity {
         //设置状态栏颜色
         getWindow().setStatusBarColor(getResources().getColor(R.color.background_blue));
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
+        //创建文件夹
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/");
+        if (!file.exists()) {
+            file.mkdirs();
+        }
         binding.clBill
                 .setOnClickListener(v -> {
                     if (choosingCl == binding.clBill) {
@@ -143,21 +148,21 @@ public class Home extends AppCompatActivity {
                 });
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            Log.e("TAG", "拍摄成功");
-            wifination.naSnapPhoto(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "wifi.jpg", wifination.TYPE_ONLY_PHONE);
-            //压缩文件
-            Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "test.png");
-            qualityCompress(bitmap, new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "test-yasuo.jpeg"));
-            //提示图库更新
-            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/"));
-            intent.setData(uri);
-            sendBroadcast(intent);
-        }
-    }
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK) {
+//            Log.e("TAG", "拍摄成功");
+//            wifination.naSnapPhoto(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "wifi.jpg", wifination.TYPE_ONLY_PHONE);
+//            //压缩文件
+//            Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "test.png");
+//            qualityCompress(bitmap, new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "test-yasuo.jpeg"));
+//            //提示图库更新
+//            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+//            Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/"));
+//            intent.setData(uri);
+//            sendBroadcast(intent);
+//        }
+//    }
 
     public void getTestWifi() {
         final ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
