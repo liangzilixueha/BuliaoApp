@@ -24,10 +24,10 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:gravity="center"
+            android:hint="万合天宜"
             android:inputType="text"
             android:lines="1"
-            android:maxLines="1"
-            android:text="万合天宜" />
+            android:maxLines="1" />
     </androidx.cardview.widget.CardView>
 
     <TextView

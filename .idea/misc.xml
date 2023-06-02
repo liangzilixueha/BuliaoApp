@@ -8,9 +8,11 @@
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/drawable/ic_home.xml" value="0.2085" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/drawable/ic_icon.xml" value="0.2455" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/drawable/ic_my.xml" value="0.264" />
+        <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/drawable/ic_wait_to_fahuo.xml" value="0.2375" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/drawable/strokes.xml" value="0.237" />
+        <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/activity_goods_view.xml" value="0.31382113821138213" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/activity_home.xml" value="0.3428442028985507" />
-        <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/activity_main.xml" value="0.38645833333333335" />
+        <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/activity_result.xml" value="0.19739583333333333" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/activity_search.xml" value="0.33" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/activity_shopping_car.xml" value="0.38645833333333335" />
@@ -28,6 +30,9 @@
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_card.xml" value="0.33" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_classify.xml" value="0.3170940170940171" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_goods.xml" value="0.3854166666666667" />
+        <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_goodsview_1.xml" value="0.3854166666666667" />
+        <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_goodsview_2.xml" value="0.3854166666666667" />
+        <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_goodsview_3.xml" value="0.33" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_newest.xml" value="0.4056872037914692" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_newest_out.xml" value="0.3854166666666667" />
         <entry key="..\:/Users/csw/Documents/GitHub/BuliaoApp/app/src/main/res/layout/list_result.xml" value="0.5" />

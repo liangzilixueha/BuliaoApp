@@ -2,8 +2,10 @@ package com.wifi_camera.mylibrary.foot_banner.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.wifi_camera.mylibrary.GoodsViewActivity;
 import com.wifi_camera.mylibrary.R;
 import com.wifi_camera.mylibrary.adapter.ListAdapter;
 import com.wifi_camera.mylibrary.databinding.ActivityStarShopBinding;
@@ -24,10 +26,12 @@ public class StarShopActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             list.add("");
         }
-        binding.gridView.setAdapter(new ListAdapter<String>(list,R.layout.list_goods) {
+        binding.gridView.setAdapter(new ListAdapter<String>(list, R.layout.list_goods) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-
+                holder.setOnClickListener(R.id.root, v -> {
+                    startActivity(new Intent(StarShopActivity.this, GoodsViewActivity.class));
+                });
             }
         });
     }
