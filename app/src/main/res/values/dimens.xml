@@ -2,4 +2,5 @@
 <resources>
     <dimen name="底部banner栏">20sp</dimen>
     <dimen name="我的记录">18sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

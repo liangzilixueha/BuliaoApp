@@ -160,6 +160,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView" />
 
             <TextView
+                android:id="@+id/tv_activity_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="更多"

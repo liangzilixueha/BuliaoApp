@@ -16,6 +16,7 @@ import com.wifi_camera.mylibrary.foot_banner.Home.PowerFragment;
 import com.wifi_camera.mylibrary.foot_banner.Home.SearchActivity;
 import com.wifi_camera.mylibrary.foot_banner.Home.StarShopActivity;
 import com.wifi_camera.mylibrary.foot_banner.Home.ZhengZhiActivity;
+import com.wifi_camera.mylibrary.foot_banner.Home.acticitymoreActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -78,6 +79,12 @@ public class HomeFragment extends Fragment {
         binding.clSearch.setOnClickListener(view -> {
             //跳转到搜索
             startActivity(new Intent(requireActivity(), SearchActivity.class));
+        });
+        binding.tvActivityMore.setOnClickListener(view -> {
+            //跳转到活动
+            Intent intent = new Intent(requireActivity(), acticitymoreActivity.class);
+            intent.putExtra("title", "活动");
+            startActivity(intent);
         });
         return binding.getRoot();
     }

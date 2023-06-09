@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.wifi_camera.mylibrary.R;
 import com.wifi_camera.mylibrary.databinding.FragmentMyBinding;
 import com.wifi_camera.mylibrary.foot_banner.My.ShoppingCarActivity;
+import com.wifi_camera.mylibrary.foot_banner.My.YJXDActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -62,6 +63,9 @@ public class MyFragment extends Fragment {
         });
         binding.tvShoppingCar.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), ShoppingCarActivity.class));
+        });
+        binding.tvYJXD.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), YJXDActivity.class));
         });
         return binding.getRoot();
     }
