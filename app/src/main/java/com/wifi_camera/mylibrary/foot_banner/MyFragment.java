@@ -33,6 +33,7 @@ import java.util.Objects;
 public class MyFragment extends Fragment {
 
     private FragmentMyBinding binding;
+    private String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "userIcon.jpg";
 
     public MyFragment() {
         // Required empty public constructor
@@ -49,9 +50,26 @@ public class MyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMyBinding.inflate(inflater, container, false);
-        Bitmap bitmap = BitmapFactory.decodeFile(path);
+
+        StringBuilder doc = new StringBuilder(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/");
+        //输出该文件下的所有文件
+        File file = new File(doc.toString());
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        File[] files = file.listFiles();
+        for (File file1 : files) {
+            if (file1.getName().contains("userIcon")) {
+                doc.append(file1.getName());
+                break;
+            }
+        }
+        Log.e("TAG", "onCreateView: " + doc);
+        Bitmap bitmap = BitmapFactory.decodeFile(doc.toString());
         if (bitmap != null) {
-            binding.ivUserIcon.setImageBitmap(BitmapFactory.decodeFile(path));
+            //查看本地是否有头像
+
+            binding.ivUserIcon.setImageBitmap(BitmapFactory.decodeFile(doc.toString()));
         }
         binding.ivUserIcon.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_PICK, null);
@@ -69,8 +87,6 @@ public class MyFragment extends Fragment {
         });
         return binding.getRoot();
     }
-
-    private String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/" + "userIcon.jpg";
 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 2) {

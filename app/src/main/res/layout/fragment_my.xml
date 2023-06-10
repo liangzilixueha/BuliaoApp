@@ -379,6 +379,7 @@
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="0dp"
+                            android:layout_margin="@dimen/myic_size"
                             android:src="@drawable/ic_wait_to_pay"
                             app:layout_constraintBottom_toTopOf="@+id/textView27"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -408,6 +409,7 @@
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="0dp"
+                            android:layout_margin="@dimen/myic_size"
                             android:src="@drawable/ic_wait_to_fahuo"
                             app:layout_constraintBottom_toTopOf="@+id/tv_wait_to_fahuo"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -437,6 +439,7 @@
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="0dp"
+                            android:layout_margin="@dimen/myic_size"
                             android:src="@drawable/ic_wait_to_shuohuo"
                             app:layout_constraintBottom_toTopOf="@+id/tv_wait_to_shouhuo"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -466,6 +469,7 @@
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="0dp"
+                            android:layout_margin="@dimen/myic_size"
                             android:src="@drawable/ic_wait_to_pingjia"
                             app:layout_constraintBottom_toTopOf="@+id/tv_wait_to_pingjia"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -494,6 +498,7 @@
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="0dp"
+                            android:layout_margin="@dimen/myic_size"
                             android:src="@drawable/ic_wait_to_tuikuan"
                             app:layout_constraintBottom_toTopOf="@+id/tv_wait_to_tuikuan"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -535,6 +540,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_qianbao"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -565,6 +573,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_wodepingjia"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -594,6 +605,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_shouhuodizhi"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -622,6 +636,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_wanshanziliao"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -662,6 +679,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_huiyuan"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -691,6 +711,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_caigoushang"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -720,6 +743,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_fuwuzhongxin"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -748,6 +774,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_yaoqingzhaunqian"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -804,6 +833,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_haopingguli"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -833,6 +865,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_fenxiangzhixun"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -861,6 +896,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/myic_size"
+                        android:layout_marginTop="@dimen/myic_size"
+                        android:layout_marginEnd="@dimen/myic_size"
                         android:layout_marginBottom="25dp"
                         android:src="@drawable/ic_yijianfankui"
                         app:layout_constraintBottom_toBottomOf="parent"
