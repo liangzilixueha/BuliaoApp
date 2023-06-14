@@ -17,6 +17,11 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="5dp">
 
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

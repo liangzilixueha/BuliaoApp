@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".foot_banner.Home.acticitymoreActivity">
 
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:text="实商精选面料"
+        android:textColor="#000000"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -15,18 +30,7 @@
         android:textColor="@color/橙黄"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="实商精选面料"
-        android:textColor="#000000"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:translationZ="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -125,6 +129,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <GridView
+                    android:horizontalSpacing="10dp"
                     android:id="@+id/gridview6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

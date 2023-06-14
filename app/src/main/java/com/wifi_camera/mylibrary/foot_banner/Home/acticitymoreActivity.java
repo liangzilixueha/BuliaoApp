@@ -41,7 +41,7 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview6.setAdapter(new ListAdapter<String>(list, R.layout.list_newest) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-
+                holder.setImageResource(R.id.img, R.raw.nav2);
             }
         });
     }
@@ -52,7 +52,7 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview1.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-
+                holder.setImageResource(R.id.img, R.raw.nav3);
             }
         });
     }
@@ -65,7 +65,7 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview2.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-
+                holder.setImageResource(R.id.img, R.raw.nav4);
             }
         });
     }
@@ -78,7 +78,7 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview3.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-
+                holder.setImageResource(R.id.img, R.raw.nav5);
             }
         });
     }
@@ -89,7 +89,7 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview4.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-
+                holder.setImageResource(R.id.img, R.raw.nav6);
             }
         });
     }
@@ -100,7 +100,7 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview5.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-
+                holder.setImageResource(R.id.img, R.raw.nav7);
             }
         });
     }

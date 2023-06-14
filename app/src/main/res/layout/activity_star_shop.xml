@@ -32,11 +32,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/shopicon"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="20sp"
-        android:src="@drawable/ic_carmer"
         app:layout_constraintStart_toStartOf="@+id/cardView6"
         app:layout_constraintTop_toBottomOf="@+id/cardView6" />
 
@@ -45,7 +44,7 @@
         android:layout_height="20dp"
         app:cardBackgroundColor="#FF7676"
         app:cardCornerRadius="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/shopicon"
         app:layout_constraintEnd_toEndOf="@+id/cardView6">
 
         <TextView
@@ -64,8 +63,8 @@
         android:text="行意纺织工厂店"
         android:textColor="@color/black"
         android:textSize="23dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="@+id/shopicon"
+        app:layout_constraintTop_toBottomOf="@+id/shopicon" />
 
     <TextView
         android:layout_width="wrap_content"

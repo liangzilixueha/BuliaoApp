@@ -22,6 +22,7 @@ public class StarShopActivity extends AppCompatActivity {
         binding = ActivityStarShopBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getWindow().setStatusBarColor(getResources().getColor(R.color.background_blue));
+        binding.shopicon.setImageResource(R.raw.shopicon);
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             list.add("");
@@ -29,6 +30,7 @@ public class StarShopActivity extends AppCompatActivity {
         binding.gridView.setAdapter(new ListAdapter<String>(list, R.layout.list_goods) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
+                holder.setImageResource(R.id.img, R.raw.s5);
                 holder.setOnClickListener(R.id.root, v -> {
                     startActivity(new Intent(StarShopActivity.this, GoodsViewActivity.class));
                 });

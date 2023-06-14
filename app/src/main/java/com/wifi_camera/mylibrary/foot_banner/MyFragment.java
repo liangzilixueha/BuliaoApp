@@ -71,6 +71,14 @@ public class MyFragment extends Fragment {
 
             binding.ivUserIcon.setImageBitmap(BitmapFactory.decodeFile(doc.toString()));
         }
+        binding.exitLogin.setOnClickListener(v -> {
+            getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE).edit().putBoolean("isLogin", false).apply();
+            //账号密码置空
+            getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE).edit().putString("username", "").apply();
+            getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE).edit().putString("password", "").apply();
+            getActivity().finish();
+        });
+        binding.userName.setText(Objects.requireNonNull(getActivity()).getSharedPreferences("user", getActivity().MODE_PRIVATE).getString("username", "未登录"));
         binding.ivUserIcon.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_PICK, null);
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
@@ -102,6 +110,11 @@ public class MyFragment extends Fragment {
                 return;
             }
             try {
+                //删除file下的所有文件
+                File[] files = file.listFiles();
+                for (File file1 : files) {
+                    file1.delete();
+                }
                 Uri uri = data.getData();
                 binding.ivUserIcon.setImageURI(uri);
                 Drawable drawable = binding.ivUserIcon.getDrawable();

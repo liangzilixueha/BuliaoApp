@@ -30,6 +30,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
             android:name=".foot_banner.Home.acticitymoreActivity"
             android:exported="false" />
         <activity
@@ -58,7 +61,7 @@
             android:name=".MyMainActivity"
             android:theme="@android:style/Theme.NoDisplay" />
         <activity
-            android:name=".Home"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

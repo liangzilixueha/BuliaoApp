@@ -7,6 +7,7 @@
 
     <com.wifi_camera.mylibrary.foot_banner.Home.MyGridview
         android:id="@+id/gridView"
+        android:horizontalSpacing="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2" />

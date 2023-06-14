@@ -25,6 +25,7 @@ import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -71,6 +72,9 @@ public class Home extends AppCompatActivity {
         setContentView(binding.getRoot());
         //设置状态栏颜色
         getWindow().setStatusBarColor(getResources().getColor(R.color.background_blue));
+        //状态栏文字颜色改为黑色
+        getWindow().getDecorView().setSystemUiVisibility(
+                getWindow().getDecorView().getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
         //创建文件夹
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Buliao/");

@@ -28,7 +28,7 @@ public class ShoppingCarActivity extends AppCompatActivity {
         binding.gridView.setAdapter(new ListAdapter<String>(list,R.layout.list_shopping_car) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-
+                holder.setImageResource(R.id.img,R.raw.shopicon);
             }
         });
     }

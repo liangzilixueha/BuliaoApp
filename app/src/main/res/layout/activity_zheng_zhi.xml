@@ -7,6 +7,7 @@
     tools:context=".foot_banner.Home.ZhengZhiActivity">
 
     <TextView
+        android:translationZ="20dp"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -19,8 +20,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:elevation="10dp"
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:background="@color/white"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="分类"
@@ -34,6 +37,7 @@
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:horizontalSpacing="10dp"
         android:numColumns="2"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

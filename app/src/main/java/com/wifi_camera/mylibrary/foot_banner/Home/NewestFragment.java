@@ -44,7 +44,8 @@ public class NewestFragment extends Fragment {
         binding.gridView.setAdapter(new ListAdapter<String>(list, R.layout.list_newest) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-                holder.setText(R.id.text, "666");
+                holder.setImageResource(R.id.img,R.raw.s1);
+                holder.setText(R.id.text, "东方红造纸厂");
             }
         });
         return binding.getRoot();

@@ -34,6 +34,7 @@ public class ZhengZhiActivity extends AppCompatActivity {
             @Override
             public void bindView(ViewHolder holder, String obj) {
                 holder.setText(R.id.text, "666");
+                holder.setImageResource(R.id.img, R.raw.nav1);
             }
         });
     }

@@ -41,7 +41,8 @@ public class SearchActivity extends AppCompatActivity {
             binding.gridView.setAdapter(new ListAdapter<String>(list, R.layout.list_newest) {
                 @Override
                 public void bindView(ViewHolder holder, String obj) {
-
+                    holder.setImageResource(R.id.img, R.raw.s3);
+                    holder.setText(R.id.text, "东方红造纸厂");
                 }
             });
         });
@@ -56,7 +57,8 @@ public class SearchActivity extends AppCompatActivity {
             binding.gridView.setAdapter(new ListAdapter<String>(list, R.layout.list_vendor) {
                 @Override
                 public void bindView(ViewHolder holder, String obj) {
-
+                    holder.setImageResource(R.id.img, R.raw.s2);
+                    holder.setText(R.id.text, "东方红造纸厂");
                 }
             });
         });
