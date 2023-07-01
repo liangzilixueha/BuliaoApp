@@ -17,6 +17,12 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     private ActivitySearchBinding binding;
+    private int img[] = {R.raw.search1, R.raw.search2, R.raw.search3, R.raw.search4, R.raw.search5,
+            R.raw.search6, R.raw.search7, R.raw.search8, R.raw.search9, R.raw.search10, R.raw.search11,
+            R.raw.search12, R.raw.search13};
+    private int img2[] = {R.raw.search20, R.raw.search21, R.raw.search22, R.raw.search23, R.raw.search4,
+            R.raw.search25, R.raw.search26, R.raw.search27};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +36,21 @@ public class SearchActivity extends AppCompatActivity {
         binding.tvSearch.setOnClickListener(v -> {
             Toast.makeText(this, "搜索了捏", Toast.LENGTH_SHORT).show();
         });
+
+
         binding.tvProducts.setOnClickListener(v -> {
             binding.tvProducts.setTextColor(getResources().getColor(R.color.橙黄));
             binding.tvVendor.setTextColor(getResources().getColor(R.color.black));
             binding.gridView.setNumColumns(2);
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 10; i++) {
-                list.add(" ");
+            List<A> list = new ArrayList<>();
+            for (int j : img2) {
+                list.add(new A("东方红造纸厂", j));
             }
-            binding.gridView.setAdapter(new ListAdapter<String>(list, R.layout.list_newest) {
+            binding.gridView.setAdapter(new ListAdapter<A>(list, R.layout.list_newest) {
                 @Override
-                public void bindView(ViewHolder holder, String obj) {
-                    holder.setImageResource(R.id.img, R.raw.s3);
-                    holder.setText(R.id.text, "东方红造纸厂");
+                public void bindView(ViewHolder holder, A obj) {
+                    holder.setImageResource(R.id.img, obj.imgID);
+                    holder.setText(R.id.text, obj.name);
                 }
             });
         });
@@ -50,19 +58,29 @@ public class SearchActivity extends AppCompatActivity {
             binding.tvVendor.setTextColor(getResources().getColor(R.color.橙黄));
             binding.tvProducts.setTextColor(getResources().getColor(R.color.black));
             binding.gridView.setNumColumns(1);
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 10; i++) {
-                list.add(" ");
+            List<A> list = new ArrayList<>();
+            for (int j : img) {
+                list.add(new A("东方红造纸厂", j));
             }
-            binding.gridView.setAdapter(new ListAdapter<String>(list, R.layout.list_vendor) {
+            binding.gridView.setAdapter(new ListAdapter<A>(list, R.layout.list_vendor) {
                 @Override
-                public void bindView(ViewHolder holder, String obj) {
-                    holder.setImageResource(R.id.img, R.raw.s2);
-                    holder.setText(R.id.text, "东方红造纸厂");
+                public void bindView(ViewHolder holder, A obj) {
+                    holder.setImageResource(R.id.img, obj.imgID);
+                    holder.setText(R.id.text, obj.name);
                 }
             });
         });
         //触发tvProducts的点击事件
         binding.tvProducts.performClick();
+    }
+
+    class A {
+        String name;
+        int imgID;
+
+        public A(String name, int imgID) {
+            this.name = name;
+            this.imgID = imgID;
+        }
     }
 }

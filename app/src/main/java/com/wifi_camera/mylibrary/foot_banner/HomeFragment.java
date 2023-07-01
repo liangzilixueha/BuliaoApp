@@ -30,6 +30,8 @@ public class HomeFragment extends Fragment {
     private List<ImageView> imageViews = new ArrayList<>();
     private int[] images = {R.raw.b1, R.raw.b3, R.raw.s10, R.raw.s6,R.raw.banner3,R.raw.idea1,R.raw.idea2,
     R.raw.idea3,R.raw.idea4,R.raw.idea5,R.raw.idea6,R.raw.idea7,R.raw.idea8,R.raw.idea9};
+//    private int[] images={R.raw.home1,R.raw.home2,R.raw.home3,R.raw.home4,R.raw.home5,R.raw.home6,R.raw.home7,
+//            R.raw.home8,R.raw.home9};
 
     public HomeFragment() {
         // Required empty public constructor

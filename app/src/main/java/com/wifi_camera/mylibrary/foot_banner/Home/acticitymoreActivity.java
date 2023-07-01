@@ -34,14 +34,16 @@ public class acticitymoreActivity extends AppCompatActivity {
     }
 
     private void setGridview6() {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            list.add("");
+        List<A> list = new ArrayList<>();
+        int[] img ={R.raw.more_grid1,R.raw.more_grid2,R.raw.more_grid3,R.raw.more_grid4,
+                R.raw.more_grid5,R.raw.more_grid6,R.raw.more_grid7,R.raw.more_grid8};
+        for (int j : img) {
+            list.add(new A("", j));
         }
-        binding.gridview6.setAdapter(new ListAdapter<String>(list, R.layout.list_newest) {
+        binding.gridview6.setAdapter(new ListAdapter<A>(list, R.layout.list_newest) {
             @Override
-            public void bindView(ViewHolder holder, String obj) {
-                holder.setImageResource(R.id.img, R.raw.nav2);
+            public void bindView(ViewHolder holder, A obj) {
+                holder.setImageResource(R.id.img, obj.imgID);
             }
         });
     }
@@ -52,33 +54,35 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview1.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-                holder.setImageResource(R.id.img, R.raw.nav3);
+                holder.setImageResource(R.id.img, R.raw.more1);
             }
         });
     }
 
     private void setGridview2() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("");
-        list.add("");
-        binding.gridview2.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
+        List<A> list = new ArrayList<>();
+        list.add(new A("热门", R.raw.more2));
+        list.add(new A("最新", R.raw.more3));
+        list.add(new A("关注", R.raw.more4));
+        binding.gridview2.setAdapter(new ListAdapter<A>(list, R.layout.list_img) {
+
             @Override
-            public void bindView(ViewHolder holder, String obj) {
-                holder.setImageResource(R.id.img, R.raw.nav4);
+            public void bindView(ViewHolder holder, A obj) {
+                holder.setImageResource(R.id.img, obj.imgID);
             }
         });
     }
 
     private void setGridview3() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("");
-        list.add("");
-        binding.gridview3.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
+        List<A> list = new ArrayList<>();
+        list.add(new A("热门", R.raw.more5));
+        list.add(new A("最新", R.raw.more6));
+        list.add(new A("关注", R.raw.more7));
+        binding.gridview3.setAdapter(new ListAdapter<A>(list, R.layout.list_img) {
+
             @Override
-            public void bindView(ViewHolder holder, String obj) {
-                holder.setImageResource(R.id.img, R.raw.nav5);
+            public void bindView(ViewHolder holder, A obj) {
+                holder.setImageResource(R.id.img, obj.imgID);
             }
         });
     }
@@ -89,7 +93,7 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview4.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-                holder.setImageResource(R.id.img, R.raw.nav6);
+                holder.setImageResource(R.id.img, R.raw.more8);
             }
         });
     }
@@ -100,8 +104,18 @@ public class acticitymoreActivity extends AppCompatActivity {
         binding.gridview5.setAdapter(new ListAdapter<String>(list, R.layout.list_img) {
             @Override
             public void bindView(ViewHolder holder, String obj) {
-                holder.setImageResource(R.id.img, R.raw.nav7);
+                holder.setImageResource(R.id.img, R.raw.more9);
             }
         });
+    }
+
+    class A {
+        String name;
+        int imgID;
+
+        public A(String name, int imgID) {
+            this.name = name;
+            this.imgID = imgID;
+        }
     }
 }

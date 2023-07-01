@@ -26,16 +26,27 @@ public class ZhengZhiActivity extends AppCompatActivity {
         binding.title.setText(title);
         //状态栏颜色白色
         getWindow().setStatusBarColor(getResources().getColor(R.color.white));
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            list.add("666");
+        List<A> list = new ArrayList<>();
+        int img[] = {R.raw.tuijian1, R.raw.tuijian2, R.raw.tuijian3, R.raw.tuijian4, R.raw.tuijian5,
+                R.raw.tuijian6, R.raw.tuijian7, R.raw.tuijian8};
+        for (int i = 0; i < img.length; i++) {
+            list.add(new A("", img[i]));
         }
-        binding.gridView.setAdapter(new ListAdapter<String>(list, R.layout.list_newest) {
+        binding.gridView.setAdapter(new ListAdapter<A>(list, R.layout.list_newest) {
             @Override
-            public void bindView(ViewHolder holder, String obj) {
-                holder.setText(R.id.text, "666");
-                holder.setImageResource(R.id.img, R.raw.nav1);
+            public void bindView(ViewHolder holder, A obj) {
+                holder.setImageResource(R.id.img, obj.imgID);
             }
         });
+    }
+
+    class A {
+        String name;
+        int imgID;
+
+        public A(String name, int imgID) {
+            this.name = name;
+            this.imgID = imgID;
+        }
     }
 }
